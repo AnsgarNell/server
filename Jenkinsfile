@@ -4,7 +4,7 @@ node {
             checkout scm
         }
         stage('Build') {
-            sh 'mvn -B clean package'
+            sh 'mvn -B -DskipTests clean package'
         }
         stage('Test') {
             sh 'mvn test'
@@ -23,6 +23,7 @@ node {
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             customImage.push("$BUILD_NUMBER")
             customImage.push("latest")
+            // Testing commit trigger
         }
     }
 }
