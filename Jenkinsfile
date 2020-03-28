@@ -23,7 +23,6 @@ node {
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             customImage.push("$BUILD_NUMBER")
             customImage.push("latest")
-            // Testing commit trigger
         }
     }
 }
